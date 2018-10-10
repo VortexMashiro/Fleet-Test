@@ -19,7 +19,7 @@ class GeneralSettingsFrame(tk.Frame):
         self.graphDisabled = tk.Checkbutton(self, text="禁用统计图", variable=checkboxValue)
         self.graphDisabled.var = checkboxValue
         self.graphDisabled.grid(row=self.counter, column="1", columnspan="2")
-        descriptor = tk.Label(self, text="Labels will still be shown")
+        descriptor = tk.Label(self, text="标签仍然会显示")
         font = tkFont.Font(font=descriptor['font'])
         font.config(slant='italic')
         descriptor['font'] = font
