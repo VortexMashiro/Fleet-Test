@@ -8,8 +8,8 @@
 ; There are other ways we could hack it in, but really it's just not worth it.
 
 [Setup]
-AppName=PELD
-AppVersion=1.0
+AppName=EvE作战监控器
+AppVersion=1.15
 DefaultDirName={pf}\PELD
 DefaultGroupName=PELD
 UninstallDisplayIcon={app}\PELD.exe
