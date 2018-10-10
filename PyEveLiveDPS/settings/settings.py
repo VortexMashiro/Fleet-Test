@@ -131,10 +131,10 @@ class Settings(FileSystemEventHandler):
         self.selectedIndex.set(0)
         
         self.mainWindow.profileMenu.add_separator()
-        self.mainWindow.profileMenu.add_command(label="Add New Profile", command=lambda: self.addProfileWindow(add=True))
-        self.mainWindow.profileMenu.add_command(label="Duplicate Current Profile", command=lambda: self.addProfileWindow(duplicate=True))
-        self.mainWindow.profileMenu.add_command(label="Rename Current Profile", command=lambda: self.addProfileWindow(rename=True))
-        self.mainWindow.profileMenu.add_command(label="Delete Current Profile", command=self.deleteProfileWindow)
+        self.mainWindow.profileMenu.add_command(label="添加新预设", command=lambda: self.addProfileWindow(add=True))
+        self.mainWindow.profileMenu.add_command(label="复制当前预设", command=lambda: self.addProfileWindow(duplicate=True))
+        self.mainWindow.profileMenu.add_command(label="重命名当前预设", command=lambda: self.addProfileWindow(rename=True))
+        self.mainWindow.profileMenu.add_command(label="删除当前预设", command=self.deleteProfileWindow)
         
     def addProfileWindow(self, add=False, duplicate=False, rename=False):
         if rename and (self.allSettings[self.selectedIndex.get()]["profile"] == "Default"):

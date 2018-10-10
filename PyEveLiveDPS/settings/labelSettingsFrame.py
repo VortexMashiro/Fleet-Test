@@ -9,15 +9,15 @@ import tkinter.font as tkFont
 from peld import settings
 
 class LabelSettingsFrame(tk.Frame):
-    text = {"dpsOut": "DPS Out:",
-            "dpsIn": "DPS In:",
-            "logiOut": "Logi Out:",
-            "logiIn": "Logi In:",
-            "capTransfered": "Cap Out:",
-            "capRecieved": "Cap In:",
-            "capDamageOut": "Cap Dmg Out:",
-            "capDamageIn": "Cap Dmg In:",
-            "mining": "Mining:"}
+    text = {"dpsOut": "DPS输出:",
+            "dpsIn": "DPS接收:",
+            "logiOut": "遥修输出:",
+            "logiIn": "遥修接收:",
+            "capTransfered": "电容传出:",
+            "capRecieved": "电容接收:",
+            "capDamageOut": "毁电输出:",
+            "capDamageIn": "每秒被毁:",
+            "mining": "采矿:"}
     def __init__(self, parent, mainWindow, **kwargs):
         tk.Frame.__init__(self, parent, **kwargs)
         self.parent = parent

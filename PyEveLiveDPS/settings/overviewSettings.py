@@ -54,7 +54,7 @@ class OverviewNotification(tk.Toplevel):
         tk.Toplevel.__init__(self)
         
         self.wm_attributes("-topmost", True)
-        self.wm_title("PyEveLiveDPS Overview Settings Warning")
+        self.wm_title("警告：需进行总览设置")
         try:
             self.iconbitmap(sys._MEIPASS + '\\app.ico')
         except Exception:
@@ -68,9 +68,9 @@ class OverviewNotification(tk.Toplevel):
         self.rowconfigure(0, weight=1)
         
         warningText = "\nWARNING:\n\n" + \
-                      "If you use custom EVE overview settings or you use an overview pack like Z-S, SaraShawa, etc.\n" + \
-                      "You need to import your overview settings into PELD.\n\n" + \
-                      "You can access these settings from the character menu at any time."
+                      "如果你使用了如 Z-S, SaraShawa等自定义总览(非原版总览)\n" + \
+                      "你需要将你的总览文件导入此程序\n\n" + \
+                      "你可以随时在人物菜单中变更这些设置"
 
         tk.Label(self, image="::tk::icons::warning").grid(column="0", row="0", rowspan="90", padx="15")
         tk.Label(self, text=warningText, anchor='w', justify=tk.LEFT).grid(column="1", row="0", sticky="w")
@@ -79,10 +79,10 @@ class OverviewNotification(tk.Toplevel):
         
         buttonFrame = tk.Frame(self)
         buttonFrame.grid(row="100", column="0", columnspan="5")
-        okButton = tk.Button(buttonFrame, text="  Open overview settings  ", command=self.openSettings)
+        okButton = tk.Button(buttonFrame, text="  打开总览设置  ", command=self.openSettings)
         okButton.grid(row="0", column="0")
         tk.Frame(buttonFrame, height="1", width="30").grid(row="0", column="1")
-        cancelButton = tk.Button(buttonFrame, text="  I am using default EVE overview settings  ", command=self.useDefault)
+        cancelButton = tk.Button(buttonFrame, text="  我使用的是原生总览(一般不会吧)  ", command=self.useDefault)
         cancelButton.grid(row="0", column="2")
         
         tk.Frame(self, height="20", width="10").grid(row="101", column="1", columnspan="5")
@@ -101,7 +101,7 @@ class OverviewSettingsWindow(tk.Toplevel):
         tk.Toplevel.__init__(self)
         
         self.wm_attributes("-topmost", True)
-        self.wm_title("PyEveLiveDPS Overview Settings")
+        self.wm_title("总览设置")
         try:
             self.iconbitmap(sys._MEIPASS + '\\app.ico')
         except Exception:
@@ -141,7 +141,7 @@ class OverviewSettingsWindow(tk.Toplevel):
         self.scrollableCanvas.bind('<Enter>', self.bindMousewheel)
         self.scrollableCanvas.bind('<Leave>', self.unbindMousewheel)
 
-        topLabel = tk.Label(canvasFrame, text="You need to export your EVE overview settings for PELD to use them:")
+        topLabel = tk.Label(canvasFrame, text="你需要将你使用的EVE总览导入软件才能正常使用该软件:")
         topLabel.grid(row="0", column="1")
             
         try:
@@ -158,8 +158,8 @@ class OverviewSettingsWindow(tk.Toplevel):
                 logging.exception('Exception playing gif:')
                 logging.exception(e)
 
-        pictureLabelText = "NOTE: If you have separate overviews for different characters \n" + \
-                           "you will need to export your settings to different files"
+        pictureLabelText = "提示：如果你不同的角色使用了各自的总览 \n" + \
+                           "你必须导出各自的总览文件"
         belowPictureLabel = tk.Label(canvasFrame, text=pictureLabelText)
         belowPictureLabel.grid(row="2", column="1")
 
@@ -189,10 +189,10 @@ class OverviewSettingsWindow(tk.Toplevel):
         
         buttonFrame = tk.Frame(self)
         buttonFrame.grid(row="100", column="0")
-        okButton = tk.Button(buttonFrame, text="  Apply  ", command=self.doSettings)
+        okButton = tk.Button(buttonFrame, text="  确认  ", command=self.doSettings)
         okButton.grid(row="0", column="0")
         tk.Frame(buttonFrame, height="1", width="30").grid(row="0", column="1")
-        cancelButton = tk.Button(buttonFrame, text="  Cancel  ", command=self.destroy)
+        cancelButton = tk.Button(buttonFrame, text="  取消  ", command=self.destroy)
         cancelButton.grid(row="0", column="2")
         
         tk.Frame(self, height="20", width="10").grid(row="101", column="0")
@@ -211,7 +211,7 @@ class OverviewSettingsWindow(tk.Toplevel):
         settingColon = tk.Label(innerFrame, text=":")
         settingColon.grid(row="1", column="1", sticky="w")
         if default:
-            settingDescriptor = tk.Label(innerFrame, text="(this is the overview setting applied to new characters)")
+            settingDescriptor = tk.Label(innerFrame, text="(这是应用至新角色的总览设置)")
             font = tkFont.Font(font=settingDescriptor['font'])
             font.config(slant='italic')
             settingDescriptor['font'] = font
@@ -220,25 +220,25 @@ class OverviewSettingsWindow(tk.Toplevel):
         if characterName in self.overviewFiles:
             overviewFile = self.overviewFiles[characterName]
         else:
-            overviewFile = 'Using PELD default overview setting'
-        fileString = overviewFile or 'Using default EVE overview settings'
+            overviewFile = '使用默认总览设置'
+        fileString = overviewFile or '使用eve原生总览设置'
         overviewLabel = tk.Label(innerFrame, text=fileString)
         overviewLabel.grid(row="2", column="0", columnspan="5", sticky="w")
 
         buttonFrame = tk.Frame(innerFrame)
         buttonFrame.grid(row="3", column="0", columnspan="4")
         openOverviewFile = lambda: self.processOverviewFile(characterName, overviewLabel,
-                           tk.filedialog.askopenfilename(initialdir=self.overviewPath, title="Select overview file"))
-        openOverviewButton = tk.Button(buttonFrame, text=" Select overview settings file ", command=openOverviewFile)
+                           tk.filedialog.askopenfilename(initialdir=self.overviewPath, title="选择总览文件"))
+        openOverviewButton = tk.Button(buttonFrame, text=" 选择总览设置文件 ", command=openOverviewFile)
         openOverviewButton.grid(row="0", column="0")
         tk.Frame(buttonFrame, height="1", width="15").grid(row="0", column="1")
         revertEVEDefaultFunc = lambda: self.revertEVEDefault(characterName, overviewLabel)
-        revertEVEDefaultButton = tk.Button(buttonFrame, text=" Use default EVE overview settings ", command=revertEVEDefaultFunc)
+        revertEVEDefaultButton = tk.Button(buttonFrame, text=" 使用eve原生总览设置 ", command=revertEVEDefaultFunc)
         revertEVEDefaultButton.grid(row="0", column="2")
         if not default:
             tk.Frame(buttonFrame, height="1", width="15").grid(row="0", column="3")
             revertDefaultFunc = lambda: self.revertPELDDefault(characterName, overviewLabel)
-            revertDefaultButton = tk.Button(buttonFrame, text=" Use PELD default overview setting ", command=revertDefaultFunc)
+            revertDefaultButton = tk.Button(buttonFrame, text=" 使用软件默认总览设置 ", command=revertDefaultFunc)
             revertDefaultButton.grid(row="0", column="4")
 
         self.settingRow += 1

@@ -16,7 +16,7 @@ class GeneralSettingsFrame(tk.Frame):
         
         checkboxValue = tk.BooleanVar()
         checkboxValue.set(settings.getGraphDisabled())
-        self.graphDisabled = tk.Checkbutton(self, text="Disable graph entirely", variable=checkboxValue)
+        self.graphDisabled = tk.Checkbutton(self, text="禁用统计图", variable=checkboxValue)
         self.graphDisabled.var = checkboxValue
         self.graphDisabled.grid(row=self.counter, column="1", columnspan="2")
         descriptor = tk.Label(self, text="Labels will still be shown")
@@ -29,18 +29,18 @@ class GeneralSettingsFrame(tk.Frame):
         
         self.secondsVar = tk.StringVar()
         self.secondsVar.set(settings.getSeconds())
-        self.addSetting(self.secondsVar, "Number of seconds to average values:", 
-                        "Recommended to set this value higher than your weapon cycle time")
+        self.addSetting(self.secondsVar, "每隔几秒计算一次平均DPS:", 
+                        "建议将此条设置为比你武器循环时间高一点的整数")
         
         self.intervalVar = tk.StringVar()
         self.intervalVar.set(settings.getInterval())
-        self.addSetting(self.intervalVar, "How often to update graph/labels in milliseconds:", 
-                        "The lower you set this value, the higher your CPU usage will be")
+        self.addSetting(self.intervalVar, "多少毫秒绘制一次图形:", 
+                        "数值越低CPU负担越大")
         
         self.transparencyVar = tk.StringVar()
         self.transparencyVar.set(settings.getCompactTransparency())
-        self.addSetting(self.transparencyVar, "Window transparency percentage in compact mode:", 
-                        "100 is fully visible, 0 is invisible")
+        self.addSetting(self.transparencyVar, "简易模式的透明度:", 
+                        "100为不透明，0为全透明")
         
         
     def addSetting(self, var, labelText, descriptorText):

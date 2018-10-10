@@ -68,7 +68,7 @@ class SettingsWindow(tk.Toplevel):
         self.graph = mainWindow.getGraph()
         
         self.wm_attributes("-topmost", True)
-        self.wm_title("PyEveLiveDPS Settings")
+        self.wm_title("设置")
         try:
             self.iconbitmap(sys._MEIPASS + '\\app.ico')
         except Exception:
