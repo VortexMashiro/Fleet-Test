@@ -150,13 +150,13 @@ class MainWindow(tk.Tk):
         self.mainMenu.grid(row="5", column="1")
         self.mainMenu.menu = tk.Menu(self.mainMenu, tearoff=False)
         self.mainMenu["menu"] = self.mainMenu.menu
-        self.mainMenu.menu.add_command(label="Edit Profile Settings", command=lambda: settingsWindow.SettingsWindow(self))
+        self.mainMenu.menu.add_command(label="编辑预设", command=lambda: settingsWindow.SettingsWindow(self))
         
         # add all the profiles from settings into the menu
         self.profileMenu = tk.Menu(self.mainMenu, tearoff=False)
         settings.initializeMenu(self)
         
-        self.mainMenu.menu.add_cascade(label="预设文件", menu=self.profileMenu)
+        self.mainMenu.menu.add_cascade(label="读取预设", menu=self.profileMenu)
         self.mainMenu.menu.add_separator()
         self.mainMenu.menu.add_command(label="舰队模式", command=lambda: fleetWindow.FleetWindow(self))
         self.mainMenu.menu.add_separator()
