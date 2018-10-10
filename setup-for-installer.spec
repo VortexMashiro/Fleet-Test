@@ -30,4 +30,4 @@ coll = COLLECT(exe,
                a.datas,
                strip=False,
                upx=True,
-               name='EVE作战监控器-中文版')
+               name='PELD')
