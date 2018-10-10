@@ -184,7 +184,7 @@ class CharacterDetector(FileSystemEventHandler):
 
         self.characterMenu.menu.add_separator()
         from settings.overviewSettings import OverviewSettingsWindow
-        self.characterMenu.menu.add_command(label='Open overview settings', command=OverviewSettingsWindow)
+        self.characterMenu.menu.add_command(label='打开总览设置', command=OverviewSettingsWindow)
         
     def on_created(self, event):
         self.addLog(event.src_path)
