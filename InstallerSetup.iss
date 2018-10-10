@@ -8,10 +8,10 @@
 ; There are other ways we could hack it in, but really it's just not worth it.
 
 [Setup]
-AppName=EvE作战监控器
+AppName=EvE Combat Monitor
 AppVersion=1.15
-DefaultDirName={pf}\PELD
-DefaultGroupName=PELD
+DefaultDirName={pf}\EvE Combat Monitor
+DefaultGroupName=EvE Combat Monitor
 UninstallDisplayIcon={app}\PELD.exe
 Compression=lzma2
 SolidCompression=yes
