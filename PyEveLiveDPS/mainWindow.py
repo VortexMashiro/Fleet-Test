@@ -35,7 +35,7 @@ class MainWindow(tk.Tk):
         self.minsize(175,50)
         
         # Set title and icon for alt+tab and taskbar
-        self.wm_title("PyEveLiveDPS")
+        self.wm_title("PvP监控器")
         try:
             self.iconbitmap(sys._MEIPASS + '\\app.ico')
         except Exception:
@@ -47,7 +47,7 @@ class MainWindow(tk.Tk):
         self.addToTaskbar()
         
         # label that appears at the top of the window in special modes like simulation and playback modes
-        self.topLabel = tk.Label(self, text="Simulation Mode", fg="white", background="black")
+        self.topLabel = tk.Label(self, text="模拟模式", fg="white", background="black")
         font = tkFont.Font(font=self.topLabel['font'])
         font.config(slant='italic')
         self.topLabel['font'] = font
@@ -135,7 +135,7 @@ class MainWindow(tk.Tk):
         
     def addMenus(self):
         # character menu options are added dynamically by CharacterDetector, so we pass this into that
-        self.characterMenu = tk.Menubutton(text="Character...", background="black", fg="white", borderwidth="1",
+        self.characterMenu = tk.Menubutton(text="选择人物...", background="black", fg="white", borderwidth="1",
                                       highlightbackground="black", highlightthickness="1",
                                       activebackground="gray25", activeforeground="white")
         self.characterMenu.grid(row="5", column="2")
@@ -144,7 +144,7 @@ class MainWindow(tk.Tk):
         self.characterDetector = logreader.CharacterDetector(self, self.characterMenu)
         
         # Set up file menu options
-        self.mainMenu = tk.Menubutton(text="File...", background="black", fg="white", borderwidth="1",
+        self.mainMenu = tk.Menubutton(text="菜单...", background="black", fg="white", borderwidth="1",
                                       highlightbackground="black", highlightthickness="1",
                                       activebackground="gray25", activeforeground="white")
         self.mainMenu.grid(row="5", column="1")
@@ -156,15 +156,15 @@ class MainWindow(tk.Tk):
         self.profileMenu = tk.Menu(self.mainMenu, tearoff=False)
         settings.initializeMenu(self)
         
-        self.mainMenu.menu.add_cascade(label="Profile", menu=self.profileMenu)
+        self.mainMenu.menu.add_cascade(label="预设文件", menu=self.profileMenu)
         self.mainMenu.menu.add_separator()
-        self.mainMenu.menu.add_command(label="Fleet Mode", command=lambda: fleetWindow.FleetWindow(self))
+        self.mainMenu.menu.add_command(label="舰队模式", command=lambda: fleetWindow.FleetWindow(self))
         self.mainMenu.menu.add_separator()
-        self.mainMenu.menu.add_command(label="Simulate Input", command=lambda: simulationWindow.SimulationWindow(self))
+        self.mainMenu.menu.add_command(label="模拟输入", command=lambda: simulationWindow.SimulationWindow(self))
         getLogFilePath = lambda: tk.filedialog.askopenfilename(initialdir=self.characterDetector.path, title="Select log file")
-        self.mainMenu.menu.add_command(label="Playback Log", command=lambda: self.characterDetector.playbackLog(getLogFilePath()))
+        self.mainMenu.menu.add_command(label="回放Log", command=lambda: self.characterDetector.playbackLog(getLogFilePath()))
         self.mainMenu.menu.add_separator()
-        self.mainMenu.menu.add_command(label="Quit", command=self.quitEvent)
+        self.mainMenu.menu.add_command(label="退出", command=self.quitEvent)
     
     def addQuitButton(self):
         """ draws and places the quit icon on the main window """

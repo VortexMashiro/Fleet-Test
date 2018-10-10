@@ -13,7 +13,7 @@ class SimulationWindow(tk.Toplevel):
         self.values = {}
         
         self.wm_attributes("-topmost", True)
-        self.wm_title("PyEveLiveDPS Simulation Settings")
+        self.wm_title("模拟设置")
         try:
             self.iconbitmap(sys._MEIPASS + '\\app.ico')
         except Exception:

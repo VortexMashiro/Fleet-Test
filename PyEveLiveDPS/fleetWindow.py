@@ -29,7 +29,7 @@ class FleetWindow(tk.Toplevel):
         self.configure(pady=10)
         
         self.wm_attributes("-topmost", True)
-        self.wm_title("PyEveLiveDPS Fleet Mode")
+        self.wm_title("舰队模式")
         try:
             self.iconbitmap(sys._MEIPASS + '\\app.ico')
         except Exception:
@@ -41,7 +41,7 @@ class FleetWindow(tk.Toplevel):
         self.update_idletasks()
         
         characterFrame = tk.Frame(self)
-        tk.Label(characterFrame, text="Character to use for fleet mode: ").grid(row="0", column="1", sticky="w")
+        tk.Label(characterFrame, text="当前选择的人物 ").grid(row="0", column="1", sticky="w")
         nameLabel = tk.Label(characterFrame, text=self.characterName)
         font = tkFont.Font(font=nameLabel['font'])
         font.config(weight='bold')
@@ -59,14 +59,14 @@ class FleetWindow(tk.Toplevel):
         
         self.serverVar = tk.StringVar()
         self.serverVar.set(settings.fleetServer)
-        self.addEntrySetting(self.serverVar, "Server to use: ", 
-                        "Don't change this unless your FC tells you to")
+        self.addEntrySetting(self.serverVar, "选择服务器 ", 
+                        "如果FC没有要求你更改的话请不要更改")
         
         self.modeVar = tk.IntVar()
         self.modeVar.set(1)
-        tk.Radiobutton(self, text="Fleet Member", variable=self.modeVar, value=1).grid(row=self.counter, column="1", sticky="w")
+        tk.Radiobutton(self, text="我是舰队成员", variable=self.modeVar, value=1).grid(row=self.counter, column="1", sticky="w")
         self.counter += 1
-        tk.Radiobutton(self, text="FC (requires fleet boss)", variable=self.modeVar, value=2).grid(row=self.counter, column="1", sticky="w")
+        tk.Radiobutton(self, text="我是舰队Boss", variable=self.modeVar, value=2).grid(row=self.counter, column="1", sticky="w")
         self.counter += 1
         tk.Frame(self, height="10", width="10").grid(row=self.counter, column="1", columnspan="5")
         self.counter += 1
@@ -87,14 +87,14 @@ class FleetWindow(tk.Toplevel):
         
         buttonFrame = tk.Frame(self)
         buttonFrame.grid(row="100", column="0", columnspan="10")
-        self.loginButton = tk.Button(buttonFrame, text="  Login  ", command=self.login)
+        self.loginButton = tk.Button(buttonFrame, text="  登录  ", command=self.login)
         self.loginButton.grid(row="0", column="0")
         tk.Frame(buttonFrame, height="1", width="30").grid(row="0", column="1")
-        cancelButton = tk.Button(buttonFrame, text="  Cancel  ", command=self.logout)
+        cancelButton = tk.Button(buttonFrame, text="  取消  ", command=self.logout)
         cancelButton.grid(row="0", column="2")
 
         self.mainWindow.mainMenu.menu.delete(3)
-        self.mainWindow.mainMenu.menu.insert_command(3, label="End Fleet Mode", command=self.logout)
+        self.mainWindow.mainMenu.menu.insert_command(3, label="退出舰队模式", command=self.logout)
         self.mainWindow.mainMenu.menu.entryconfig(5, state=tk.DISABLED)
         self.mainWindow.mainMenu.menu.entryconfig(6, state=tk.DISABLED)
         self.mainWindow.characterMenu.configure(state=tk.DISABLED)
@@ -169,7 +169,7 @@ class SocketNotificationWindow(tk.Toplevel):
         self.configure(pady=10, padx=20)
         
         self.wm_attributes("-topmost", True)
-        self.wm_title("PyEveLiveDPS Awaiting Login")
+        self.wm_title("Awaiting Login")
         try:
             self.iconbitmap(sys._MEIPASS + '\\app.ico')
         except Exception:
