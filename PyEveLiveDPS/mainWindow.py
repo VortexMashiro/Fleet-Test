@@ -35,7 +35,7 @@ class MainWindow(tk.Tk):
         self.minsize(175,50)
         
         # Set title and icon for alt+tab and taskbar
-        self.wm_title("PvP监控器")
+        self.wm_title("EvE作战监控器")
         try:
             self.iconbitmap(sys._MEIPASS + '\\app.ico')
         except Exception:
