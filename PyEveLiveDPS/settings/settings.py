@@ -21,7 +21,7 @@ class Settings(FileSystemEventHandler):
     defaultProfile = [ {
                         "profile": "Default",
                         "logLevel": 20,
-                        "fleetServer": "peld-fleet.com",
+                        "fleetServer": "fleet.vortexmashiro.cc",
                         "profileSettings": 
                             { "windowX": 0, "windowY": 0,
                              "windowHeight": 225, "windowWidth": 350,
