@@ -141,7 +141,7 @@ class FleetWindow(tk.Toplevel):
             self.mainWindow.animator.queue = None
             self.mainWindow.topLabel.grid_remove()
         self.mainWindow.mainMenu.menu.delete(3)
-        self.mainWindow.mainMenu.menu.insert_command(3, label="Fleet Mode", command=lambda: FleetWindow(self.mainWindow))
+        self.mainWindow.mainMenu.menu.insert_command(3, label="舰队模式", command=lambda: FleetWindow(self.mainWindow))
         self.mainWindow.mainMenu.menu.entryconfig(5, state="normal")
         self.mainWindow.mainMenu.menu.entryconfig(6, state="normal")
         self.mainWindow.characterMenu.configure(state="normal")
