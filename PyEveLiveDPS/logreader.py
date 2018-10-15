@@ -115,8 +115,8 @@ _logLanguageRegex = {
         'mined': "\(mining\) .* <b><.*?><.*?>([0-9]+).*<b>(?:<localized .*?>)?(.+)\*</b>"
     },
     'japanese': {
-        'character': "(?<=收听者:  ).*",
-        'sessionTime': "(?<=进程开始:  ).*",
+        'character': "(?<=收听者: ).*",
+        'sessionTime': "(?<=进程开始: ).*",
         'pilotAndWeapon': '(?:.*ffffffff>(?:<localized .*?>)?(?P<default_pilot>[^\(\)<>]*)(?:\[.*\((?:<localized .*?>)?(?P<default_ship>.*)\)<|<)/b.*> \-(?: (?:<localized .*?>)?(?P<default_weapon>.*?)(?: \-|<)|.*))',
         'damageOut': "\(combat\) <.*?><b>([0-9]+).*> 对 <",
         'damageIn': "\(combat\) <.*?><b>([0-9]+).*> 来自 <",
