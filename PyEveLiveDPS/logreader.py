@@ -98,7 +98,7 @@ _logLanguageRegex = {
     'german': {
         'character': "(?<=收听者: ).*",
         'sessionTime': "(?<=进程开始: ).*",
-        'pilotAndWeapon': '(?:.*ffffffff>(?:<localized .*?>)?(?P<default_pilot>[^\(\)<>]*)(?:\[.*\((?:<localized .*?>)?(?P<default_ship>.*)\)<|<)/b.*> \-(?: (?P<default_weapon>.*?)(?: \-|<)|.*))',
+        'pilotAndWeapon': '(?:.*ffffffff>(?:<localized .*?>)?(?P<default_pilot>[^\(\)<>]*)(?:\[.*\((?:<localized .*?>)?(?P<default_ship>.*)\)<|<)/b.*> \-(?: (?:<default_weapon .*?>)?(?P<default_weapon>.*?)(?: \-|<)|.*))',
         'damageOut': "\(combat\) <.*?><b>([0-9]+).*>对<",
         'damageIn': "\(combat\) <.*?><b>([0-9]+).*>来自<",
         'armorRepairedOut': "\(combat\) <.*?><b>([0-9]+).*>远程装甲维修量至<",
