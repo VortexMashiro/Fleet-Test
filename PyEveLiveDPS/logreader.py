@@ -127,11 +127,11 @@ _logLanguageRegex = {
         'hullRepairedIn': "\(combat\) <.*?><b>([0-9]+).*> 远程结构维修量由 <",
         'shieldBoostedIn': "\(combat\) <.*?><b>([0-9]+).*> 远程护盾回充增量由 <",
         'capTransferedOut': "\(combat\) <.*?><b>([0-9]+).*> 远程电容传输至 <",
-        'capNeutralizedOut': "\(combat\) <.*?ff7fffff><b>([0-9]+).*> 吸取 <",
-        'nosRecieved': "\(combat\) <.*?><b>\+([0-9]+).*> 能量中和 <",
+        'capNeutralizedOut': "\(combat\) <.*?ff7fffff><b>([0-9]+).*> 能量中和 <",
+        'nosRecieved': "\(combat\) <.*?><b>\+([0-9]+).*> 吸取 <",
         'capTransferedIn': "\(combat\) <.*?><b>([0-9]+).*> 远程电容传输由 <",
-        'capNeutralizedIn': "\(combat\) <.*?ffe57f7f><b>([0-9]+).*> 被吸取到 <",
-        'nosTaken': "\(combat\) <.*?><b>\-([0-9]+).*> 能量中和 <",
+        'capNeutralizedIn': "\(combat\) <.*?ffe57f7f><b>([0-9]+).*> 能量中和 <",
+        'nosTaken': "\(combat\) <.*?><b>\-([0-9]+).*> 被吸取到 <",
         'mined': "\(mining\) .* <b><.*?><.*?>([0-9]+).*<b>(?:<localized .*?>)?(.+)\*</b>"
     }
 }
