@@ -120,7 +120,7 @@ class FleetWindow(tk.Toplevel):
             if self.lowCPUVar.get():
                 settings.lowCPUMode = True
                 self.mainWindow.animator.changeSettings()
-            self.mainWindow.topLabel.configure(text="Fleet Mode (" + self.characterName + ")")
+            self.mainWindow.topLabel.configure(text="舰队模式 (" + self.characterName + ")")
             self.mainWindow.topLabel.grid()
             self.mainWindow.animator.queue = self.sockMgr.dataQueue
             self.destroy()
