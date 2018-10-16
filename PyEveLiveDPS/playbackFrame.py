@@ -33,7 +33,7 @@ class PlaybackFrame(tk.Frame):
         
         self.makeStopButton()
         
-        self.graphLabel = tk.Label(self, background="black", foreground="grey", text="Log Entry\nFrequency:")
+        self.graphLabel = tk.Label(self, background="black", foreground="grey", text="Log\n频率:")
         self.graphLabel.grid(row="2", column="0", columnspan="2")
         self.mainWindow.makeDraggable(self.graphLabel)
         
