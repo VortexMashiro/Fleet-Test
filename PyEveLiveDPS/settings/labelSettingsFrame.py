@@ -27,15 +27,15 @@ class LabelSettingsFrame(tk.Frame):
         self.gridColumns = settings.getLabelColumns()
         self.labels = settings.getLabels()
         
-        tk.Label(self, text="Labels on the left grid will be attached to the left side of the window.\n" +
-                    "Labels on the right grid will be attached to the right side of the window.\n\n" + 
-                    "You can drag and drop labels to move them to a different position in the grid."
+        tk.Label(self, text="左边的标签会显示在绘图窗口的左边.\n" +
+                    "右边的标签会显示在绘图窗口的右边.\n\n" + 
+                    "你可以通过拖动来将标签放在你想要的相对位置."
                     ).grid(row="0", column="1", columnspan="5", pady=10)
-        tk.Label(self, text="Use the arrows to move columns from one side of the window to another."
+        tk.Label(self, text="通过大箭头来移动整列."
                     ).grid(row="3", column="1", columnspan="5")
-        tk.Label(self, text="The number box represents how many decimal places the label will use. 0 is no decimal places.\n" +
-                    "The checkbox is to represent the number in thousands.\n\n" +
-                    "For instance, if you choose '3' decimals, and check the box, the number 1,234 will show as 1.234K"
+        tk.Label(self, text="数值为标签显示的小数点位数设定. 0则为只有整数.\n" +
+                    "在方形选框中打勾可将此标签的数值单位改为千.\n\n" +
+                    "例如, 如果你选择了三位小数, 并在方框中打勾, 则数值1,234会显示为1.234K"
                     ).grid(row="100", column="1", columnspan="5", pady=10)
         
         tk.Frame(self, height="1", width="10").grid(row="1",column="2")
