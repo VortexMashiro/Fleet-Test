@@ -19,7 +19,7 @@ class FleetWindow(tk.Toplevel):
         characterEntries = mainWindow.characterDetector.menuEntries
         if len(characterEntries) == 0:
             self.destroy()
-            tk.messagebox.showerror("Error", "PELD must be tracking a character before enabling fleet mode.")
+            tk.messagebox.showerror("错误", "请在进入舰队模式前选择一个人物")
             return
         characterIndex = mainWindow.characterDetector.selectedIndex.get()
         self.characterName = characterEntries[characterIndex]
@@ -47,8 +47,8 @@ class FleetWindow(tk.Toplevel):
         font.config(weight='bold')
         nameLabel['font'] = font
         nameLabel.grid(row="0", column="2", sticky="w")
-        nameDescription = tk.Label(self, text="To use a different character for fleet mode, choose a different\n" +
-                            " character in the 'Character...' menu on the main window")
+        nameDescription = tk.Label(self, text="如果要使用其他人物进入舰队模式\n" +
+                            " 请在主菜单的人物选项中选择")
         font = tkFont.Font(font=nameDescription['font'])
         font.config(slant='italic')
         nameDescription['font'] = font
@@ -60,7 +60,7 @@ class FleetWindow(tk.Toplevel):
         self.serverVar = tk.StringVar()
         self.serverVar.set(settings.fleetServer)
         self.addEntrySetting(self.serverVar, "选择服务器 ", 
-                        "如果FC没有要求你更改的话请不要更改")
+                        "请按FC要求你更改的地址更改")
         
         self.modeVar = tk.IntVar()
         self.modeVar.set(1)
@@ -73,9 +73,9 @@ class FleetWindow(tk.Toplevel):
         
         self.lowCPUVar = tk.BooleanVar()
         self.lowCPUVar.set(False)
-        lowCPUCheckbutton = tk.Checkbutton(self, text="Use low CPU mode", variable=self.lowCPUVar)
+        lowCPUCheckbutton = tk.Checkbutton(self, text="使用性能模式(电脑很卡的话)", variable=self.lowCPUVar)
         lowCPUCheckbutton.grid(row=self.counter, column="1", columnspan="2", sticky="w")
-        descriptor = tk.Label(self, text="Most features will be disabled, but networking will work normally")
+        descriptor = tk.Label(self, text="性能模式中大部分功能将被禁用，只保留网络传输功能")
         font = tkFont.Font(font=descriptor['font'])
         font.config(slant='italic')
         descriptor['font'] = font
@@ -169,7 +169,7 @@ class SocketNotificationWindow(tk.Toplevel):
         self.configure(pady=10, padx=20)
         
         self.wm_attributes("-topmost", True)
-        self.wm_title("Awaiting Login")
+        self.wm_title("等待登录")
         try:
             self.iconbitmap(sys._MEIPASS + '\\app.ico')
         except Exception:
@@ -180,7 +180,7 @@ class SocketNotificationWindow(tk.Toplevel):
         self.geometry("200x50")
         self.update_idletasks()
             
-        tk.Label(self, text='Waiting for you to login...').grid(row=1, column=1)
+        tk.Label(self, text='正在等待登录授权...').grid(row=1, column=1)
 
         self.loginStatus = loginQueue.get()
 
