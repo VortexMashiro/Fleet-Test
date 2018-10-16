@@ -59,7 +59,7 @@ class UpdateNotificaitonWindow(tk.Toplevel):
         self.geometry("350x300")
         self.update_idletasks()
         
-        windowHeader = tk.Label(self, text="Update Available")
+        windowHeader = tk.Label(self, text="原版更新可用，若更新会失去汉化")
         font = tkFont.Font(font=windowHeader['font'])
         font.config(size='16', weight='bold')
         windowHeader['font'] = font
