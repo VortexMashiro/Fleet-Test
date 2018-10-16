@@ -107,10 +107,10 @@ class SettingsWindow(tk.Toplevel):
         
         buttonFrame = tk.Frame(self)
         buttonFrame.grid(row="100", column="0", columnspan="5")
-        okButton = tk.Button(buttonFrame, text="  Apply All  ", command=self.doSettings)
+        okButton = tk.Button(buttonFrame, text="  应用所有设定  ", command=self.doSettings)
         okButton.grid(row="0", column="0")
         tk.Frame(buttonFrame, height="1", width="30").grid(row="0", column="1")
-        cancelButton = tk.Button(buttonFrame, text="  Cancel  ", command=self.destroy)
+        cancelButton = tk.Button(buttonFrame, text="  取消  ", command=self.destroy)
         cancelButton.grid(row="0", column="2")
         
         tk.Frame(self, height="20", width="10").grid(row="101", column="1", columnspan="5")
