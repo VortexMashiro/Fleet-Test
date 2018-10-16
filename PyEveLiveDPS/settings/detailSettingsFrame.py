@@ -25,7 +25,7 @@ class DetailSettingsFrame(tk.Frame):
         
         checkboxValue = tk.BooleanVar()
         checkboxValue.set(settings.detailsWindowShow)
-        self.windowDisabled = tk.Checkbutton(self, text="显示当前集火目标窗口", variable=checkboxValue)
+        self.windowDisabled = tk.Checkbutton(self, text="显示互动详情窗口", variable=checkboxValue)
         self.windowDisabled.var = checkboxValue
         self.windowDisabled.grid(row="1", column="1", columnspan="2")
         
