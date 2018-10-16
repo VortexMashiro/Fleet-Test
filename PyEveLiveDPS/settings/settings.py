@@ -145,11 +145,11 @@ class Settings(FileSystemEventHandler):
         self.newProfileWindow.wm_attributes("-topmost", True)
         
         if add:
-            self.newProfileWindow.wm_title("New Profile")
+            self.newProfileWindow.wm_title("新预设")
         elif duplicate:
-            self.newProfileWindow.wm_title("Duplicate Profile")
+            self.newProfileWindow.wm_title("复制预设")
         elif rename:
-            self.newProfileWindow.wm_title("Rename Profile")
+            self.newProfileWindow.wm_title("重命名预设")
             
         try:
             self.newProfileWindow.iconbitmap(sys._MEIPASS + '\\app.ico')
@@ -163,7 +163,7 @@ class Settings(FileSystemEventHandler):
         
         tk.Frame(self.newProfileWindow, height="10", width="1").grid(row="0", column="0")
         
-        profileLabel = tk.Label(self.newProfileWindow, text="    New Profile Name:")
+        profileLabel = tk.Label(self.newProfileWindow, text="    新预设名称:")
         profileLabel.grid(row="1", column="0")
         self.profileString = tk.StringVar()
         if duplicate:
@@ -196,11 +196,11 @@ class Settings(FileSystemEventHandler):
         
     def addProfile(self, add=False, duplicate=False, rename=False):
         if (self.profileString.get() == "Default"):
-            tk.messagebox.showerror("Error", "There can only be one profile named 'Default'")
+            tk.messagebox.showerror("错误", "仅能有一个名称为'Default'的预设")
             return
         for profile in self.allSettings:
             if self.profileString.get() == profile["profile"]:
-                tk.messagebox.showerror("Error", "There is already a profile named '" + self.profileString.get() + "'")
+                tk.messagebox.showerror("错误", "已有同名预设 '" + self.profileString.get() + "'")
                 return
         if add:
             newProfile = copy.deepcopy(self.defaultProfile[0])
@@ -220,9 +220,9 @@ class Settings(FileSystemEventHandler):
     
     def deleteProfileWindow(self):
         if (self.allSettings[self.selectedIndex.get()]["profile"] == "Default"):
-            tk.messagebox.showerror("Error", "You can't delete the Default profile.")
+            tk.messagebox.showerror("错误", "你不能删除Default(默认)预设.")
             return
-        okCancel = tk.messagebox.askokcancel("Continue?", "Are you sure you want to delete the current profile?")
+        okCancel = tk.messagebox.askokcancel("继续吗?", "你确定要删除这条预设吗?")
         if not okCancel:
             return
         self.allSettings.pop(self.selectedIndex.get())
@@ -521,7 +521,7 @@ class Settings(FileSystemEventHandler):
         except Exception as e:
             logging.exception('Exception loading overview settings file: ' + overviewFile)
             logging.exception(e)
-            tk.messagebox.showerror("Error", "Error loading overview settings file:\n"+overviewFile)
+            tk.messagebox.showerror("错误", "总览文件加载失败:\n"+overviewFile)
             return None
     
     def setSettings(self, capDamageIn=None, capDamageOut=None, capRecieved=None, capTransfered=None,
