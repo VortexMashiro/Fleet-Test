@@ -82,7 +82,7 @@ class OverviewNotification(tk.Toplevel):
         okButton = tk.Button(buttonFrame, text="  打开总览设置  ", command=self.openSettings)
         okButton.grid(row="0", column="0")
         tk.Frame(buttonFrame, height="1", width="30").grid(row="0", column="1")
-        cancelButton = tk.Button(buttonFrame, text="  我使用的是原生总览(一般不会吧)  ", command=self.useDefault)
+        cancelButton = tk.Button(buttonFrame, text="  我使用的是EVE初始总览  ", command=self.useDefault)
         cancelButton.grid(row="0", column="2")
         
         tk.Frame(self, height="20", width="10").grid(row="101", column="1", columnspan="5")
@@ -250,20 +250,20 @@ class OverviewSettingsWindow(tk.Toplevel):
             with open(path, encoding='utf8') as overviewFileContent:
                 overviewSettings = yaml.safe_load(overviewFileContent.read())
                 if 'shipLabelOrder' not in overviewSettings or 'shipLabels' not in overviewSettings:
-                    tk.messagebox.showerror("Error", "Overview settings not in YAML file:\n"+path)
+                    tk.messagebox.showerror("文件格式错误", "文件格式必须是YAML:\n"+path)
                     return
                 for shipLabel in overviewSettings['shipLabels']:
                     shipLabel[1] = dict(shipLabel[1])
                     if not shipLabel[1]['state']:
                         if shipLabel[1]['type'] in ['pilot name', 'ship type']:
                             logging.warning(shipLabel[1]['type'] + " not in "+str(path))
-                            tk.messagebox.showerror("Error", "Error: The '"+shipLabel[1]['type']+"' is disabled in these " + \
-                              "overview settings.  You need to enable the display of this label for PELD to track properly.\n\n" + \
-                              "You can enable it on the 'ships' tab of your overview settings in EVE.\n\n" + \
-                              "Don't forget to export your overview settings again!")
+                            tk.messagebox.showerror("错误", "错误:  '"+shipLabel[1]['type']+"' 舰船标签在" + \
+                              "此总览设定中被禁用.  你需要在总览设置中启用舰船标签显示来使此程序正常追踪Log.\n\n" + \
+                              "你可以在总览设置中的'ships'标签中打开舰船显示设置.\n\n" + \
+                              "更改设置后请重新导出并加载到此软件中!")
         except:
             logging.error("Error processing overview settings file: "+str(path))
-            tk.messagebox.showerror("Error", "Error processing overview settings file:\n"+str(path))
+            tk.messagebox.showerror("错误", "总览文件识别失败:\n"+str(path))
             return
             
         self.overviewFiles[characterName] = path
